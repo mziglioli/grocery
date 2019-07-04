@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.sainsburys.utils.GroceryWrapperTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2019-07-04T17:49:52" hostname="8X29HC2" time="0.192">
+  <properties/>
+  <testcase name="testInValidCalories" classname="com.sainsburys.utils.GroceryWrapperTest" time="0.006"/>
+  <testcase name="testInValidDescription" classname="com.sainsburys.utils.GroceryWrapperTest" time="0.011"/>
+  <testcase name="testValidPrice" classname="com.sainsburys.utils.GroceryWrapperTest" time="0.043"/>
+  <testcase name="testValidTitle" classname="com.sainsburys.utils.GroceryWrapperTest" time="0.025"/>
+  <testcase name="testInValidPrice" classname="com.sainsburys.utils.GroceryWrapperTest" time="0.011"/>
+  <testcase name="testInValidTitle" classname="com.sainsburys.utils.GroceryWrapperTest" time="0.007"/>
+  <testcase name="testValidDescription" classname="com.sainsburys.utils.GroceryWrapperTest" time="0.023"/>
+  <testcase name="testValidGrocery" classname="com.sainsburys.utils.GroceryWrapperTest" time="0.032"/>
+  <testcase name="testValidCalories" classname="com.sainsburys.utils.GroceryWrapperTest" time="0.013"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

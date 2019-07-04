@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.sainsburys.service.GroceryServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-07-04T17:49:49" hostname="8X29HC2" time="3.209">
+  <properties/>
+  <testcase name="testJson" classname="com.sainsburys.service.GroceryServiceTest" time="3.05"/>
+  <testcase name="testGrocery" classname="com.sainsburys.service.GroceryServiceTest" time="0.159"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
