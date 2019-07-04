@@ -7,7 +7,7 @@ import dto.GroceryDto;
 import dto.TotalDto;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.jsoup.nodes.Document;
@@ -34,10 +34,10 @@ public class GroceryService {
         }
     }
 
-    private GroceryDto buildGroceryDto(){
+    GroceryDto buildGroceryDto(){
         GroceryDto dto = new GroceryDto();
         final BigDecimal[] total = {BigDecimal.ZERO};
-        List<Grocery> groceries = groceriesClient.getGroceriesUrls().stream()
+        List<Grocery> groceries = getGroceriesUrls().stream()
             .map(url -> {
                 Grocery g = buildGrocery(url);
                 total[0] = total[0].add(g.getPrice());
@@ -46,6 +46,14 @@ public class GroceryService {
         dto.setGroceries(groceries);
         dto.setTotal(buildTotal(total));
         return dto;
+    }
+
+    public List<String> getGroceriesUrls(){
+        Document document = groceriesClient.getDocument();
+        if(document != null){
+            return groceriesWrapper.getGroceriesUrls(document);
+        }
+        return new ArrayList<>();
     }
 
     private Grocery buildGrocery(String url) {

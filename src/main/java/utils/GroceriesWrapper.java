@@ -4,8 +4,11 @@ import static org.apache.commons.lang3.StringUtils.isNumeric;
 
 import domain.Grocery;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class GroceriesWrapper {
 
@@ -22,15 +25,23 @@ public class GroceriesWrapper {
         return grocery;
     }
 
-    private String getTitle(Document document) {
-       return document.selectFirst(".productTitleDescriptionContainer h1").text();
+    public String getTitle(Document document) {
+       return getTextByQuery(document, ".productTitleDescriptionContainer h1");
     }
 
-    private String getDescription(Document document) {
-        return document.selectFirst(".mainProductInfo .productText p").text();
+    public String getDescription(Document document) {
+        return getTextByQuery(document, ".mainProductInfo .productText p");
     }
 
-    private BigDecimal getPrice(Document document) {
+    public String getTextByQuery(Document document, String query){
+        Element element = document.selectFirst(query);
+        if(element != null){
+            return element.text();
+        }
+        return "";
+    }
+
+    public BigDecimal getPrice(Document document) {
         Element element = document.selectFirst(".pricingAndTrolleyOptions .pricePerUnit");
         if(element != null){
             String pricePerUnit = element.childNode(0)
@@ -42,15 +53,20 @@ public class GroceriesWrapper {
         return BigDecimal.ZERO;
     }
 
-    private int getCalories(Document document) {
-        Element kcalElement = document.selectFirst("table.nutritionTable .tableRow0 td");
-        if(kcalElement != null){
-            String kcal = kcalElement.text()
-                .replaceAll("kcal", "");
-            if(isNumeric(kcal)){
-                return Integer.valueOf(kcal);
-            }
+    public int getCalories(Document document) {
+        String kcal = getTextByQuery(document, "table.nutritionTable .tableRow0 td")
+            .replaceAll("kcal", "");
+        if(isNumeric(kcal)){
+            return Integer.valueOf(kcal);
         }
         return 0;
+    }
+
+    public List<String> getGroceriesUrls(Document document){
+        Elements groceries = document.select("div.productNameAndPromotions a");
+        if(groceries != null){
+            return groceries.eachAttr("abs:href");
+        }
+        return new ArrayList<>();
     }
 }
