@@ -9,6 +9,8 @@ Requirements
 git clone https://github.com/mziglioli/grocery.git
 
 cd grocery
+* build: 
 gradle clean build
 
-./runGroceryScraper is used to run the application, it takes the URL to be queried as the only argument e.g. ./runGroceryScraper.sh https://jsainsburyplc.github.io/serverside-test/site/www.sainsburys.co.uk/webapp/wcs/stores/servlet/gb/groceries/berries-cherries-currants6039.html
+* run: 
+gradle run
